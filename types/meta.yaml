@@ -1,0 +1,38 @@
+openapi: "3.1.0"
+info:
+  version: 1.0.0-SNAPSHOT
+  title: Language Extensions Schema
+  description: Schemata for frequently used language extensions or patterns
+  contact:
+    name: Miguel Pinilla
+    email: miguel.pinilla@saldubatech.com
+    url: https://saldubatech.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers: []
+paths: []
+components:
+  schemas:
+    EntityReference:
+      type: object
+      description: |
+        The information necessary to locate a resource representing an instance of a Model Entity.
+      additionalProperties: false
+      properties:
+        home:
+          type: string
+          description: |
+            The Endpoint where the entity instance is located. If not present, the receiver of the information must
+            have a different way to resolve it.
+          format: uri
+        kind:
+          type: string
+          description: |
+            The url to the OpenAPI schema definition for the kind of entity, following `$ref` format'
+            If absent, the receiver of the information must have a different way to know what kind of entity this reference represents.
+        local_id:
+          type: string
+          format: uuid
+          description: A unique id that is to be interpreted in the context of `home` and `kind` that uniquely identifies the entity instance.
+      required: ['local_id']

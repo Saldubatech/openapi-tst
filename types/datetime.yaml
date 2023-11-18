@@ -1,0 +1,114 @@
+openapi: "3.1.0"
+info:
+  version: 1.0.0-SNAPSHOT
+  title: Date-Time Schemata
+  description: Schemata for standard representation of Date, Times, Timezones, Intervals, etc...
+  contact:
+    name: Miguel Pinilla
+    email: miguel.pinilla@saldubatech.com
+    url: https://saldubatech.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers: []
+paths: []
+components:
+  schemas:
+    Instant:
+      type: object
+      description: |
+        An instant in time, expressed in milliseconds since the Unix Epoch, interpreted in the given timezone.
+      properties:
+        epoch:
+          type: integer
+          format: int64
+          description: The Unix Epoch expressed as milliseconds
+        tz:
+          $ref: '#/components/schemas/TZ_Iana'
+      additionalProperties: false
+      required: ['epoch', 'tz']
+    TZ_Iana:
+      type: string
+      enum:
+        - UTC
+    Interval:
+      type: object
+      description: |
+        An interval of time including the `from` value and excluding the millisecond of the `to` value.
+      properties:
+        from:
+          $ref: '#/components/Instant'
+        to:
+          $ref: '#/components/Instant'
+    TimeUnit:
+      type: string
+      description: |
+        Predefined units of time following ISO8601 standard, extended with Milliseconds.
+      enum:
+        - YEAR
+        - MONTH
+        - WEEK
+        - DAY
+        - HOUR
+        - MINUTE
+        - SECOND
+        - MILLISECOND
+      default: SECOND
+    Duration:
+      type: integer
+      format: array
+      description:
+        A length of time represented by counts of standard units. The actual duration is to be computed in the context of an Instant and counting each provided element forward or backward appropriately.
+      items:
+        type: object
+        properties:
+          count:
+            type: integer
+            format: int32
+          unit:
+            $ref: '#/components/schemas/TimeUnit'
+        additionalProperties: false
+        required: ['count', 'unit']
+    WallTime:
+      type: object
+      description: |
+        A definition of a moment in time that needs to be interpreted in a local context as it does not define either the timezone nor a standard reference for time. To be used to describe common applications like opening hours, etc...
+      additionalProperties: false
+      properties:
+        year:
+          type: integer
+          format: int32
+        month:
+          type: number
+          format: int32
+          minimum: 0
+        week:
+          type: number
+          format: int32
+          minimum: 0
+        day:
+          type: number
+          format: int32
+          minimum: 0
+        hour:
+          type: number
+          format: int32
+          minimum: 0
+          maximum: 23
+          default: 0
+        minute:
+          minimum: 0
+          maximum: 59
+          default: 0
+        second:
+          type: number
+          format: int32
+          minimum: 0
+          maximum: 59
+          default: 0
+        millisecond:
+          type: number
+          format: int32
+          minimum: 0
+          maximum: 999
+          default: 0
