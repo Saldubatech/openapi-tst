@@ -2,12 +2,15 @@
 
 A work-in-progress proposal for how to represent and manage Supply Chain information using OpenApi specifications. It follows the ideas in the articles by [Salduba Technologies](https://medium.com/salduba).
 
-The specifications can be found here: [API Browser](https://saldubatech.github.io/openapi-tst/)
+The specification browser can be found here: [OpenApi Browser](https://saldubatech.github.io/openapi-tst/)
 
 ## Structure
 
 Types
 : Definition of basic, reusable schemas
+
+* [meta](https://saldubatech.github.io/openapi-tst/?spec=types/meta.yaml)
+* [datetime](https://saldubatech.github.io/openapi-tst/?spec=datetime.yaml)
 
 ## Publishing Guide and Acknowledgement
 
