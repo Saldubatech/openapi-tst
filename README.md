@@ -9,8 +9,8 @@ The specification browser can be found here: [OpenApi Browser](https://saldubate
 Types
 : Definition of basic, reusable schemas
 
-* [meta](https://saldubatech.github.io/openapi-tst/?spec=types/meta.yaml){:target="_blank"}
-* [datetime](https://saldubatech.github.io/openapi-tst/?spec=types/datetime.yaml){:target="_blank"}
+* [meta](https://saldubatech.github.io/openapi-tst/?spec=types/meta.yaml)
+* [datetime](https://saldubatech.github.io/openapi-tst/?spec=types/datetime.yaml)
 
 ## Publishing Guide and Acknowledgement
 
