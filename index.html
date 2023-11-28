@@ -14,6 +14,26 @@
     <div id="swagger-ui"></div>
     <script src="dist/swagger-ui-bundle.js" charset="UTF-8"> </script>
     <script src="dist/swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
-    <script src="dist/swagger-initializer.js" charset="UTF-8"> </script>
+    <script>
+      window.onload = function() {
+        const urlOutput = document.getElementById('urlOutput');
+        const urlSearchParam = new URLSearchParams(window.location.search).get('spec');
+        const queryString = urlSearchParam === null ? 'swagger.yaml' : urlSearchParam;
+        console.log("QueryString: "+queryString)
+        window.ui = SwaggerUIBundle({
+          url: queryString, // "swagger.yaml",
+          dom_id: '#swagger-ui',
+          deepLinking: true,
+          presets: [
+            SwaggerUIBundle.presets.apis,
+            SwaggerUIStandalonePreset
+          ],
+          plugins: [
+            SwaggerUIBundle.plugins.DownloadUrl
+          ],
+          layout: "StandaloneLayout"
+        });
+    };
+    </script>
   </body>
 </html>
