@@ -1,4 +1,4 @@
-openapi: "3.1.0"
+openapi: '3.0.2'
 info:
   version: 1.0.0-SNAPSHOT
   title: Date-Time Schemata
@@ -37,9 +37,9 @@ components:
         An interval of time including the `from` value and excluding the millisecond of the `to` value.
       properties:
         from:
-          $ref: '#/components/Instant'
+          $ref: '#/components/schemas/Instant'
         to:
-          $ref: '#/components/Instant'
+          $ref: '#/components/schemas/Instant'
     TimeUnit:
       type: string
       description: |
